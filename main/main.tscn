@@ -1,12 +1,59 @@
-[gd_scene load_steps=4 format=3 uid="uid://754xep3b4ja4"]
+[gd_scene load_steps=10 format=3 uid="uid://754xep3b4ja4"]
 
 [ext_resource type="PackedScene" uid="uid://dja53r0rmssaf" path="res://spawner/spawner.tscn" id="1_pjrb6"]
 [ext_resource type="Script" uid="uid://pf3paefp0am" path="res://main/main.gd" id="1_xwkvk"]
 [ext_resource type="PackedScene" uid="uid://cxinvjbxuy05e" path="res://target/target.tscn" id="2_pjrb6"]
+[ext_resource type="Texture2D" uid="uid://b3h7xuymo8dr3" path="res://assets/background.png" id="4_c651c"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c651c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c651c"]
+size = Vector2(2651.59, 269.516)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wy1v"]
+size = Vector2(2677.68, 315.312)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfbq2"]
+size = Vector2(317.502, 1767.53)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dugh"]
+size = Vector2(435.182, 1743.1)
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("target")]
+z_index = -1
 script = ExtResource("1_xwkvk")
 target = NodePath("Target")
+
+[node name="Background sprite" type="Sprite2D" parent="."]
+position = Vector2(576.5, 324.25)
+scale = Vector2(0.450391, 0.450347)
+texture = ExtResource("4_c651c")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(576.5, 324.25)
+scale = Vector2(0.450391, 0.450347)
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_c651c")
+
+[node name="Bottom" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(45.5161, 602.73)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_c651c")
+
+[node name="Top" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-21.0929, -624.518)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_3wy1v")
+
+[node name="Right" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1205.62, 23.8702)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_kfbq2")
+
+[node name="Left" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1266.68, 32.7526)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_4dugh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(577, 324)
