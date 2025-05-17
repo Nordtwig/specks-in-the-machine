@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dja53r0rmssaf"]
+
+[ext_resource type="Script" uid="uid://bqnvk2xn5k38f" path="res://spawner/spawner.gd" id="1_khvsl"]
+[ext_resource type="PackedScene" uid="uid://ddh8h3dt4n83j" path="res://speck/speck.tscn" id="2_nhote"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_khvsl")
+speck = ExtResource("2_nhote")
+time_between_spawns = 0.05
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true

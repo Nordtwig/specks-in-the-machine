@@ -11,14 +11,44 @@ config_version=5
 [application]
 
 config/name="specks-in-the-machine"
+run/main_scene="uid://754xep3b4ja4"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [file_customization]
 
 folder_colors={
-"res://main/": "blue"
+"res://main/": "blue",
+"res://spawner/": "teal",
+"res://speck/": "green",
+"res://target/": "red"
 }
+
+[global_group]
+
+targets=""
+
+[input]
+
+left_click={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+right_click={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(76, 15),"global_position":Vector2(85, 63),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+
+[layer_names]
+
+2d_physics/layer_1="specks"
+2d_physics/layer_2="obstacles"
+
+[physics]
+
+2d/default_gravity=0.0
 
 [rendering]
 
