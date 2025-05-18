@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://754xep3b4ja4"]
+[gd_scene load_steps=11 format=3 uid="uid://754xep3b4ja4"]
 
 [ext_resource type="PackedScene" uid="uid://dja53r0rmssaf" path="res://spawner/spawner.tscn" id="1_pjrb6"]
 [ext_resource type="Script" uid="uid://pf3paefp0am" path="res://main/main.gd" id="1_xwkvk"]
 [ext_resource type="PackedScene" uid="uid://cxinvjbxuy05e" path="res://target/target.tscn" id="2_pjrb6"]
 [ext_resource type="Texture2D" uid="uid://b3h7xuymo8dr3" path="res://assets/background.png" id="4_c651c"]
+[ext_resource type="AudioStream" uid="uid://daanqmfpx3ab6" path="res://assets/bgmusic/bgmusic.mp3" id="5_3wy1v"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c651c"]
 
@@ -63,3 +64,7 @@ position = Vector2(203, 332)
 
 [node name="Target" parent="." instance=ExtResource("2_pjrb6")]
 position = Vector2(897, 331)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3wy1v")
+autoplay = true
