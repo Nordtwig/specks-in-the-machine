@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://754xep3b4ja4"]
+[gd_scene load_steps=14 format=3 uid="uid://754xep3b4ja4"]
 
 [ext_resource type="PackedScene" uid="uid://dja53r0rmssaf" path="res://spawner/spawner.tscn" id="1_pjrb6"]
 [ext_resource type="Script" uid="uid://pf3paefp0am" path="res://main/main.gd" id="1_xwkvk"]
@@ -8,6 +8,7 @@
 [ext_resource type="PhysicsMaterial" uid="uid://cux0rwov6xqts" path="res://obstacles/bouncy_wall.tres" id="5_67ri8"]
 [ext_resource type="PackedScene" uid="uid://mn3te63c15ux" path="res://intake/intake.tscn" id="6_kfbq2"]
 [ext_resource type="PackedScene" uid="uid://dixq8khxwjvu7" path="res://obstacles/small_obstacle.tscn" id="7_4dugh"]
+[ext_resource type="PackedScene" uid="uid://cjkgh6rnj04ry" path="res://obstacles/medium_obstacle.tscn" id="9_grrlh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c651c"]
 size = Vector2(2651.59, 269.516)
@@ -79,3 +80,6 @@ time_between_spawns = 0.1
 
 [node name="SmallObstacle" parent="Obstacles" instance=ExtResource("7_4dugh")]
 position = Vector2(569, 196)
+
+[node name="MediumObstacle" parent="Obstacles" instance=ExtResource("9_grrlh")]
+position = Vector2(751, 430)
