@@ -11,15 +11,17 @@ func _ready() -> void:
 	Events.mouse_over_beacon.connect(_on_mouse_over_beacon)
 	Events.mouse_left_beacon.connect(_on_mouse_left_beacon)
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("left_click"):
+		if _count_number_of_devices() < max_devices and not mouse_is_over_beacon:
+			_place_beacon()
+
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 	if Input.is_action_just_pressed("restart_level"):
 		get_tree().reload_current_scene()
-	if Input.is_action_just_pressed("left_click"):
-		if _count_number_of_devices() < max_devices && not mouse_is_over_beacon:
-			_place_beacon()
 
 
 func _place_beacon() -> void:
