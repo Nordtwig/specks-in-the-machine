@@ -63,6 +63,9 @@ func _locate_nearest_beacon() -> void:
 
 func score() -> void:
 	print(name + " reached intake and scored!")
+	$AudioStreamPlayer2D.play()
+	visible = false
+	await $AudioStreamPlayer2D.finished
 	queue_free()
 
 

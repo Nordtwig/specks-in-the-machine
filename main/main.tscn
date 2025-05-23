@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dja53r0rmssaf" path="res://spawner/spawner.tscn" id="1_pjrb6"]
 [ext_resource type="Script" uid="uid://pf3paefp0am" path="res://main/main.gd" id="1_xwkvk"]
 [ext_resource type="PackedScene" uid="uid://cxinvjbxuy05e" path="res://beacon/beacon.tscn" id="2_kfbq2"]
+[ext_resource type="AudioStream" uid="uid://ddqb81pftuthm" path="res://assets/bgmusic2/bgmusic2.mp3" id="3_grrlh"]
 [ext_resource type="Texture2D" uid="uid://b3h7xuymo8dr3" path="res://assets/background.png" id="4_c651c"]
-[ext_resource type="AudioStream" uid="uid://daanqmfpx3ab6" path="res://assets/bgmusic/bgmusic.mp3" id="5_3wy1v"]
 [ext_resource type="PhysicsMaterial" uid="uid://cux0rwov6xqts" path="res://obstacles/bouncy_wall.tres" id="5_67ri8"]
 [ext_resource type="PackedScene" uid="uid://mn3te63c15ux" path="res://intake/intake.tscn" id="6_kfbq2"]
 [ext_resource type="PackedScene" uid="uid://dixq8khxwjvu7" path="res://obstacles/small_obstacle.tscn" id="7_4dugh"]
@@ -31,7 +31,8 @@ beacon_parent = NodePath("Beacons")
 [node name="Utils" type="Node" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Utils"]
-stream = ExtResource("5_3wy1v")
+stream = ExtResource("3_grrlh")
+volume_db = -15.0
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="Utils"]
