@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dixq8khxwjvu7"]
+
+[ext_resource type="Texture2D" uid="uid://b8ewq1nhgooe8" path="res://assets/obstacle1.png" id="1_6rs23"]
+[ext_resource type="PhysicsMaterial" uid="uid://cux0rwov6xqts" path="res://obstacles/bouncy_wall.tres" id="1_yoq1v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6rs23"]
+size = Vector2(62, 143)
+
+[node name="SmallObstacle" type="StaticBody2D"]
+collision_layer = 2
+physics_material_override = ExtResource("1_yoq1v")
+
+[node name="Obstacle1" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_6rs23")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_6rs23")

@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://mn3te63c15ux"]
+[gd_scene load_steps=5 format=3 uid="uid://mn3te63c15ux"]
 
 [ext_resource type="Texture2D" uid="uid://cronpxoe2sc7g" path="res://assets/intake.png" id="1_hcmuk"]
 [ext_resource type="Script" uid="uid://dneih7a0nfjub" path="res://intake/intake.gd" id="1_xi3if"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hcmuk"]
 radius = 23.0217
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xi3if"]
+radius = 111.041
 
 [node name="Intake" type="Area2D"]
 collision_layer = 2
@@ -16,3 +19,9 @@ texture = ExtResource("1_hcmuk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hcmuk")
+
+[node name="SphereOfInfluence" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SphereOfInfluence"]
+shape = SubResource("CircleShape2D_xi3if")

@@ -3,10 +3,11 @@ class_name Speck
 
 @export var move_speed: float = 150
 @export var max_speed: float = 200
-@export var distance_to_touch: float = 50.0
+@export var distance_to_touch: float = 100.0
 
 var target_beacon: Node2D = null
 var touched_beacons: Array[Node] = []
+var pulled_by_intake: bool = false
 
 
 func _ready() -> void:
@@ -21,19 +22,19 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# TODO This isn't working, find out why
 	if !target_beacon:
 		return
 	
-	print(global_position.distance_to(target_beacon.global_position))
-	
 	if global_position.distance_to(target_beacon.global_position) <= distance_to_touch:
-		touched_beacons.append(target_beacon)
-		target_beacon = null
-		_locate_nearest_beacon()
+		if not pulled_by_intake:
+			touched_beacons.append(target_beacon)
+			target_beacon = null
+			_locate_nearest_beacon()
 
 	# If there's a target node present, pushed towards it at move_speed
 	if target_beacon:
+		if pulled_by_intake:
+			move_speed *= 1.2
 		apply_central_force(global_position.direction_to(target_beacon.global_position) * move_speed)
 		
 	
@@ -48,7 +49,7 @@ func _locate_nearest_beacon() -> void:
 		for touched_beacon in touched_beacons:
 			if beacon == touched_beacon:
 				all_beacons.erase(beacon)
-	var nearest_beacon
+	var nearest_beacon = null
 	for beacon: Node2D in all_beacons:
 		if !nearest_beacon:
 			nearest_beacon = beacon
@@ -63,6 +64,11 @@ func _locate_nearest_beacon() -> void:
 func score() -> void:
 	print(name + " reached intake and scored!")
 	queue_free()
+
+
+func in_sphere_of_influence(node: Node2D) -> void:
+	target_beacon = node
+	pulled_by_intake = true
 
 
 func _on_lifespawn_timer_timeout() -> void:
