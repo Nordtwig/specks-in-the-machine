@@ -8,6 +8,7 @@ extends Node2D
 @export_category("Utils")
 @export var beacon_scene: PackedScene
 @export var beacon_parent: Node
+@export var anim_player: AnimationPlayer
 
 var mouse_is_over_beacon: bool = false
 
@@ -16,6 +17,7 @@ func _ready() -> void:
 	Events.mouse_over_beacon.connect(_on_mouse_over_beacon)
 	Events.mouse_left_beacon.connect(_on_mouse_left_beacon)
 	Events.max_score_reached.connect(_on_max_score_reached)
+	anim_player.play("fade_in")
 
 
 func _process(delta: float) -> void:
@@ -29,6 +31,8 @@ func _input(event: InputEvent) -> void:
 		get_tree().quit()
 	if Input.is_action_just_pressed("restart_level"):
 		AudioManager.get_node("RestartSound").play()
+		anim_player.play("fade_out")
+		await anim_player.animation_finished
 		get_tree().reload_current_scene()
 
 

@@ -28,6 +28,8 @@ func win() -> void:
 	Events.max_score_reached.emit()
 	$IntakeSprite.visible = false
 	$IntakeWonSprite.visible = true
+	await get_tree().create_timer(0.25).timeout
+	intake_progress.visible = false
 
 	
 func _on_body_entered(body: Node2D) -> void:
