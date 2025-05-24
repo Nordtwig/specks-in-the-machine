@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://754xep3b4ja4"]
+[gd_scene load_steps=22 format=3 uid="uid://754xep3b4ja4"]
 
 [ext_resource type="PackedScene" uid="uid://dja53r0rmssaf" path="res://spawner/spawner.tscn" id="1_pjrb6"]
 [ext_resource type="Script" uid="uid://pf3paefp0am" path="res://main/main.gd" id="1_xwkvk"]
@@ -7,10 +7,94 @@
 [ext_resource type="AudioStream" uid="uid://buibh6jc6g32e" path="res://assets/sfx/lose.mp3" id="4_0i4oc"]
 [ext_resource type="Texture2D" uid="uid://b3h7xuymo8dr3" path="res://assets/background.png" id="4_c651c"]
 [ext_resource type="PhysicsMaterial" uid="uid://cux0rwov6xqts" path="res://obstacles/bouncy_wall.tres" id="5_67ri8"]
+[ext_resource type="Shader" uid="uid://c06be2bxmcb57" path="res://main/overlay.gdshader" id="5_fwcvl"]
 [ext_resource type="PackedScene" uid="uid://mn3te63c15ux" path="res://intake/intake.tscn" id="6_kfbq2"]
 [ext_resource type="PackedScene" uid="uid://dixq8khxwjvu7" path="res://obstacles/small_obstacle.tscn" id="7_4dugh"]
 [ext_resource type="PackedScene" uid="uid://cjkgh6rnj04ry" path="res://obstacles/medium_obstacle.tscn" id="9_grrlh"]
 [ext_resource type="Texture2D" uid="uid://bpdnj80rwpgv" path="res://assets/generator_top.png" id="11_bsumw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_na0o7"]
+shader = ExtResource("5_fwcvl")
+shader_parameter/progress = 0.0
+shader_parameter/fill = true
+
+[sub_resource type="Animation" id="Animation_fwcvl"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.50113),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_na0o7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/fill")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_73k8k"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/fill")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5xyti"]
+_data = {
+&"RESET": SubResource("Animation_na0o7"),
+&"fade_in": SubResource("Animation_73k8k"),
+&"fade_out": SubResource("Animation_fwcvl")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c651c"]
 size = Vector2(2651.59, 269.516)
@@ -42,6 +126,21 @@ position = Vector2(577, 324)
 
 [node name="RestartSound" type="AudioStreamPlayer" parent="Utils"]
 stream = ExtResource("4_0i4oc")
+
+[node name="Overlay" type="ColorRect" parent="."]
+visibility_layer = 512
+z_index = 5
+material = SubResource("ShaderMaterial_na0o7")
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.84, 16.24)
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Overlay")
+libraries = {
+&"": SubResource("AnimationLibrary_5xyti")
+}
 
 [node name="BackgroundSprite" type="Sprite2D" parent="."]
 position = Vector2(576.5, 324.25)
