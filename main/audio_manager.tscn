@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc2npafi27c6d"]
+
+[ext_resource type="AudioStream" uid="uid://ddqb81pftuthm" path="res://assets/bgmusic2/bgmusic2.mp3" id="1_as8sy"]
+[ext_resource type="AudioStream" uid="uid://buibh6jc6g32e" path="res://assets/sfx/lose.mp3" id="2_618ib"]
+[ext_resource type="AudioStream" uid="uid://bpufyunkwfc27" path="res://assets/sfx/win.mp3" id="2_sal4t"]
+
+[node name="AudioManager" type="Node2D"]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_as8sy")
+volume_db = -15.0
+autoplay = true
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_sal4t")
+
+[node name="RestartSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_618ib")

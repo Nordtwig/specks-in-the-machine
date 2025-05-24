@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 [autoload]
 
 Events="*res://events.gd"
+AudioManager="*res://main/audio_manager.tscn"
 
 [file_customization]
 
@@ -32,6 +33,7 @@ folder_colors={
 
 specks=""
 beacons=""
+main=""
 
 [input]
 

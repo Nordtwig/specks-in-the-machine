@@ -3,3 +3,4 @@ extends Node
 signal beacon_placed
 signal mouse_over_beacon
 signal mouse_left_beacon
+signal max_score_reached
