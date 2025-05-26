@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="specks-in-the-machine"
-run/main_scene="uid://754xep3b4ja4"
+run/main_scene="uid://d1l4wsfj3ki66"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [autoload]
@@ -66,6 +66,7 @@ restart_level={
 [physics]
 
 2d/default_gravity=0.0
+2d/default_linear_damp=0.1
 
 [rendering]
 

@@ -11,6 +11,7 @@ class_name Spawner
 
 func _ready() -> void:
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
+	Events.max_score_reached.connect(_on_max_score_reached)
 	spawn_timer.wait_time = time_between_spawns
 	spawn_timer.start()
 
@@ -23,3 +24,7 @@ func spawn_speck() -> void:
 
 func _on_spawn_timer_timeout() -> void:
 	spawn_speck()
+
+
+func _on_max_score_reached() -> void:
+	spawn_timer.paused = true

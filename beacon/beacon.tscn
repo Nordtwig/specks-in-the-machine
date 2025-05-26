@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cay5fssmjesfc" path="res://assets/beacon.png" id="1_mxwgd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mxwgd"]
-radius = 34.0
+radius = 67.0298
 
 [node name="Beacon" type="Node2D" groups=["beacons"]]
 script = ExtResource("1_55r3e")

@@ -34,6 +34,7 @@ func win() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("specks"):
+		body.remove_from_group("specks")
 		if score < score_to_win:
 			add_score()
 		body.score()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://dx2hc56jbkrk3"]
+[gd_scene load_steps=20 format=3 uid="uid://dx2hc56jbkrk3"]
 
 [ext_resource type="Script" uid="uid://pf3paefp0am" path="res://main/main.gd" id="1_loqf2"]
+[ext_resource type="PackedScene" uid="uid://b1aqk18v1c6xm" path="res://main/credits.tscn" id="2_a5eq5"]
 [ext_resource type="PackedScene" uid="uid://cxinvjbxuy05e" path="res://beacon/beacon.tscn" id="2_ekcnl"]
 [ext_resource type="Shader" uid="uid://c06be2bxmcb57" path="res://main/overlay.gdshader" id="3_a5eq5"]
 [ext_resource type="Texture2D" uid="uid://b3h7xuymo8dr3" path="res://assets/background.png" id="4_i8ibx"]
@@ -120,7 +121,9 @@ size = Vector2(435.182, 1743.1)
 [node name="Main" type="Node2D" node_paths=PackedStringArray("beacon_parent", "anim_player") groups=["main"]]
 z_index = -1
 script = ExtResource("1_loqf2")
-max_score = 30
+max_devices = 5
+max_score = 1
+next_level = ExtResource("2_a5eq5")
 beacon_scene = ExtResource("2_ekcnl")
 beacon_parent = NodePath("Beacons")
 anim_player = NodePath("Utils/AnimationPlayer")
@@ -174,6 +177,7 @@ shape = SubResource("RectangleShape2D_4dugh")
 
 [node name="Intake" parent="." instance=ExtResource("6_bgsiw")]
 position = Vector2(961, 331)
+score_to_win = 1
 
 [node name="Beacons" type="Node" parent="."]
 
@@ -185,9 +189,6 @@ speck_parent = NodePath("../Specks")
 time_between_spawns = 0.1
 
 [node name="Obstacles" type="Node" parent="."]
-
-[node name="SmallObstacle" parent="Obstacles" instance=ExtResource("8_5fk2m")]
-position = Vector2(862, 312)
 
 [node name="SmallObstacle2" parent="Obstacles" instance=ExtResource("8_5fk2m")]
 position = Vector2(337, 198)
@@ -203,16 +204,8 @@ position = Vector2(717, 339)
 position = Vector2(283, 434)
 rotation = 1.5817
 
-[node name="SmallObstacle5" parent="Obstacles" instance=ExtResource("8_5fk2m")]
-position = Vector2(549, 450)
-rotation = -1.56904
-
 [node name="SmallObstacle6" parent="Obstacles" instance=ExtResource("8_5fk2m")]
 position = Vector2(863, 460)
-
-[node name="SmallObstacle7" parent="Obstacles" instance=ExtResource("8_5fk2m")]
-position = Vector2(901, 206)
-rotation = 1.57471
 
 [node name="MediumObstacle2" parent="Obstacles" instance=ExtResource("9_367l0")]
 position = Vector2(529, 294)

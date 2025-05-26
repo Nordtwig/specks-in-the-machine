@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1l4wsfj3ki66"]
+[gd_scene load_steps=10 format=3 uid="uid://b1aqk18v1c6xm"]
 
-[ext_resource type="Script" uid="uid://w8b6uvomrb3l" path="res://main/start_menu.gd" id="1_c75ke"]
-[ext_resource type="Shader" uid="uid://c06be2bxmcb57" path="res://main/overlay.gdshader" id="2_tus5k"]
-[ext_resource type="Texture2D" uid="uid://b3h7xuymo8dr3" path="res://assets/background.png" id="3_2vbak"]
+[ext_resource type="Script" uid="uid://j4pnn4gh7xcd" path="res://main/credits.gd" id="1_1tmvd"]
+[ext_resource type="Texture2D" uid="uid://b3h7xuymo8dr3" path="res://assets/background.png" id="2_s5mjd"]
+[ext_resource type="Shader" uid="uid://c06be2bxmcb57" path="res://main/overlay.gdshader" id="3_toil4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2vbak"]
-shader = ExtResource("2_tus5k")
+shader = ExtResource("3_toil4")
 shader_parameter/progress = 0.0
 shader_parameter/fill = true
 
@@ -102,20 +102,19 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_2vbak"]
 font_size = 40
 
-[node name="StartMenu" type="Control" node_paths=PackedStringArray("anim_player")]
+[node name="Credits" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_c75ke")
-anim_player = NodePath("Utils/AnimationPlayer")
+script = ExtResource("1_1tmvd")
 
 [node name="BackgroundSprite" type="Sprite2D" parent="."]
 position = Vector2(576.5, 324.25)
 scale = Vector2(0.450391, 0.450347)
-texture = ExtResource("3_2vbak")
+texture = ExtResource("2_s5mjd")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(577, 324)
@@ -155,27 +154,15 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Specks in the Machine"
+text = "Thank you for playing!"
 label_settings = SubResource("LabelSettings_2vbak")
 
-[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="ReturnButton" type="Button" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Play"
+text = "Return to menu"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "How to play:
-- Left Click to place 'Beacon'
-- R to restart level
-- ESC to return to start menu (here)
-Place beacons to pull specks from orange generator and
-towards the blue intake"

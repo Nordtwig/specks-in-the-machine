@@ -121,6 +121,7 @@ size = Vector2(435.182, 1743.1)
 [node name="Main" type="Node2D" node_paths=PackedStringArray("beacon_parent", "anim_player") groups=["main"]]
 z_index = -1
 script = ExtResource("1_mnt8k")
+max_devices = 4
 max_score = 25
 next_level = ExtResource("2_k4i8p")
 beacon_scene = ExtResource("2_3mrvi")
