@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://main/start_menu.tscn")
 	if Input.is_action_just_pressed("restart_level"):
 		AudioManager.get_node("RestartSound").play()
 		anim_player.play("fade_out")
