@@ -25,13 +25,13 @@ func add_score() -> void:
 
 
 func win() -> void:
-	Events.max_score_reached.emit()
 	$IntakeSprite.visible = false
 	$IntakeWonSprite.visible = true
+	Events.max_score_reached.emit()
 	await get_tree().create_timer(0.25).timeout
 	intake_progress.visible = false
 
-	
+
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("specks"):
 		if score < score_to_win:

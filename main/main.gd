@@ -40,7 +40,6 @@ func _place_beacon() -> void:
 	var new_beacon = beacon_scene.instantiate()
 	beacon_parent.add_child(new_beacon)
 	new_beacon.global_position = get_global_mouse_position()
-	
 	Events.beacon_placed.emit()
 
 
@@ -58,3 +57,5 @@ func _on_mouse_left_beacon() -> void:
 
 func _on_max_score_reached() -> void:
 	AudioManager.get_node("WinSound").play()
+	await get_tree().create_timer(.5).timeout
+	get_tree().change_scene_to_packed(next_level)
